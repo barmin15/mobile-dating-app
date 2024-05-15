@@ -1,17 +1,17 @@
+// main.go
 package main
 
 import (
-	initializers "github.com/barmin15/mobile-dating-app/backend/initializer"
-	"github.com/gin-gonic/gin"
+    "github.com/barmin15/mobile-dating-app/backend/initializer"
+    "github.com/barmin15/mobile-dating-app/backend/router"
 )
 
 func init() {
-	initializers.LoadEnvVariables()
-	initializers.ConnectToDB()
+    initializer.LoadEnvVariables()
+    initializer.ConnectToDB()
 }
 
 func main() {
-	r := gin.Default()
-
-	r.Run()
+    r := router.CreateRoutes()
+    r.Run()
 }
