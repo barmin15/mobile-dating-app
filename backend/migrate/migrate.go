@@ -13,8 +13,6 @@ func init() {
 func main() {
     db := initializer.DB
 
-//users, location, swipes
-
     // Auto-migrate the models
     db.AutoMigrate(&model.User{})
     db.AutoMigrate(&model.Location{})
