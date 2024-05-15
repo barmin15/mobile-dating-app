@@ -21,7 +21,7 @@ type Profile struct {
     Gender             Gender
     DatingPreference   string
     PartnersCount      uint
-    Photos    []string `gorm:"type:json"`
+    Photos    [3]string `gorm:"type:json"`
     Interests []string `gorm:"type:json"`
 }
 
@@ -39,3 +39,4 @@ func (p *Profile) BeforeSave(tx *gorm.DB) (err error) {
     return nil
 }
 
+ 
