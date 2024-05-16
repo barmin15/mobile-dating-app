@@ -1,8 +1,8 @@
 package model
 
 import (
-	"errors"
-	"gorm.io/gorm"
+    "errors"
+    "gorm.io/gorm"
 )
 
 type Gender string
@@ -15,14 +15,15 @@ const (
 
 type Profile struct {
     gorm.Model
-    UserID    uint   `gorm:"unique"`
-    Bio       string
-    Age                uint
-    Gender             Gender
-    DatingPreference   string
-    PartnersCount      uint
-    Photos    [3]string `gorm:"type:json"`
-    Interests []string `gorm:"type:json"`
+    UserID            uint   `gorm:"unique"`
+    Name               string
+    Bio               string
+    Age               uint
+    Gender            Gender
+    DatingPreference  Gender
+    PartnersCount     uint
+    Photos            [3]string `gorm:"type:json"`
+    Interests         []string `gorm:"type:json"`
 }
 
 func (g Gender) Validate() error {
@@ -36,7 +37,8 @@ func (p *Profile) BeforeSave(tx *gorm.DB) (err error) {
     if err := p.Gender.Validate(); err != nil {
         return err
     }
+    if err := p.DatingPreference.Validate(); err != nil {
+        return err
+    }
     return nil
 }
-
- 
