@@ -7,6 +7,6 @@ import (
 )
 
 func SetupPostRoutes(r *gin.Engine) *gin.Engine {
-    r.POST("/user", controller.PostUser)
+    r.POST("/register/", controller.RegisterUser)
     return r
 }
